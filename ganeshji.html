@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh Chaturthi Wishes</title>
+    <!-- Font Awesome for WhatsApp Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 500px;
+            box-sizing: border-box;
+            transition: all 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Animated Firecracker Border --- */
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 5px; /* Space for the inner glow */
+        }
+        .image-wrapper.hidden {
+            display: none;
+        }
+
+        .image-wrapper::before,
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -5px; bottom: -5px; left: -5px; right: -5px;
+            border-radius: 20px; /* Slightly larger for outer glow */
+            z-index: -1;
+            background-size: 400% 400%; /* For gradient animation */
+        }
+
+        .image-wrapper::before {
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FF4500); /* Gold, Orange, Red */
+            animation: firecrackerPulse 3s ease-in-out infinite alternate;
+            filter: blur(8px); /* Glowing effect */
+            opacity: 0.8;
+        }
+
+        .image-wrapper::after {
+            background: linear-gradient(45deg, #FF69B4, #8A2BE2, #00BFFF, #FF00FF); /* Pink, Purple, Blue, Magenta */
+            animation: firecrackerSparkle 5s linear infinite;
+            filter: blur(5px); /* Sharper sparkle */
+            opacity: 0.6;
+            transform: scale(1.05); /* Slightly larger than before for layered effect */
+        }
+
+        @keyframes firecrackerPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes firecrackerSparkle {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Inner image border radius */
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+        /* --- End Animated Firecracker Border --- */
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ff7e5f;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #feb47b;
+            box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
+            outline: none;
+        }
+        button {
+            background-color: #ff7e5f;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #feb47b;
+            transform: translateY(-2px);
+        }
+        .link-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            word-break: break-all;
+            display: none;
+            text-align: center; /* Center the WhatsApp button */
+        }
+        .message-box {
+            margin-top: 30px;
+            font-size: 2.5em;
+            color: #d62828;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: none;
+            animation: fadeIn 1.5s forwards, bounce 2s infinite ease-in-out;
+            transform-origin: bottom;
+            line-height: 1.2;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .sender-name {
+            font-size: 0.7em;
+            color: #007bff;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Integrated WhatsApp Share Button Style */
+        .whatsapp-share-btn-integrated {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center; /* Center content within button */
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            width: auto; /* Allow button to size naturally */
+        }
+        .whatsapp-share-btn-integrated:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+        .whatsapp-share-btn-integrated i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <div class="image-wrapper" id="image-wrapper">
+            <img id="main-image" src="InShot_20250827_105529396.jpg" alt="Ganesh Ji">
+        </div>
+        
+        <div id="input-section">
+            <h2>अपना नाम दर्ज करें</h2>
+            <input type="text" id="userNameInput" placeholder="यहाँ अपना नाम लिखें">
+            <button onclick="generateLink()">लिंक बनाएँ</button>
+            <div class="link-box" id="generatedLinkBox">
+                <!-- WhatsApp button will appear here, replacing the raw link -->
+                <a href="#" id="whatsappShareBtn" class="whatsapp-share-btn-integrated" target="_blank" style="display: none;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp पर शुभकामनाएँ भेजें
+                </a>
+            </div>
+        </div>
+
+        <div class="message-box" id="wishMessage">
+            <span id="greetingText"></span>
+            <div class="sender-name" id="displaySenderName"></div>
+            <div id="reply-section" class="hidden">
+                <p>आप भी अपना लिंक भेजें:</p>
+                <input type="text" id="replyNameInput" placeholder="यहाँ अपना नाम लिखें">
+                <button onclick="generateReplyLink()">अपना लिंक बनाएँ</button>
+                <div class="link-box" id="replyLinkBox">
+                    <!-- WhatsApp button for reply will appear here -->
+                    <a href="#" id="whatsappShareReplyBtn" class="whatsapp-share-btn-integrated" target="_blank" style="display: none;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp पर शुभकामनाएँ भेजें
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mainContainer = document.getElementById('main-container');
+        const inputSection = document.getElementById('input-section');
+        const generatedLinkBox = document.getElementById('generatedLinkBox');
+        const whatsappShareBtn = document.getElementById('whatsappShareBtn');
+        const wishMessage = document.getElementById('wishMessage');
+        const greetingText = document.getElementById('greetingText');
+        const displaySenderName = document.getElementById('displaySenderName');
+        const replySection = document.getElementById('reply-section');
+        const replyLinkBox = document.getElementById('replyLinkBox');
+        const whatsappShareReplyBtn = document.getElementById('whatsappShareReplyBtn');
+        const imageWrapper = document.getElementById('image-wrapper');
+
+        function generateLink() {
+            const userName = document.getElementById('userNameInput').value;
+            if (userName.trim() === "") {
+                alert("कृपया अपना नाम दर्ज करें!");
+                return;
+            }
+
+            const baseUrl = window.location.origin + window.location.pathname;
+            const encodedName = encodeURIComponent(userName);
+            const link = `${baseUrl}?from=${encodedName}`;
+            
+            // Set up WhatsApp Share button with the generated link
+            const whatsappMessage = encodeURIComponent(`Aaj kuch khaas hai! ${userName} की ओर से शुभकामनाएँ! अब लिंक खोलें: ${link}`);
+            whatsappShareBtn.href = `https://api.whatsapp.com/send?text=${whatsappMessage}`;
+            whatsappShareBtn.style.display = 'inline-flex'; // Show WhatsApp button
+            
+            generatedLinkBox.style.display = 'block'; // Show the link box
+            generatedLinkBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateReplyLink() {
+            const replyName = document.getElementById('replyNameInput').value;
+            if (replyName.trim() === "") {
+                alert("कृपया अपना नाम दर्ज करें!");
+                return;
+            }
+
+            const baseUrl = window.location.origin + window.location.pathname;
+            const encodedName = encodeURIComponent(replyName);
+            const link = `${baseUrl}?from=${encodedName}`;
+            
+            // Set up WhatsApp Share button for reply with the generated link
+            const whatsappMessage = encodeURIComponent(`Happy Ganesh Chaturthi! ${replyName} की ओर से शुभकामनाएँ! यह लिंक खोलें: ${link}`);
+            whatsappShareReplyBtn.href = `https://api.whatsapp.com/send?text=${whatsappMessage}`;
+            whatsappShareReplyBtn.style.display = 'inline-flex'; // Show WhatsApp button
+
+            replyLinkBox.style.display = 'block'; // Show the link box
+            replyLinkBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        window.onload = function() {
+            const sender = getUrlParameter('from');
+            if (sender) {
+                inputSection.classList.add('hidden');
+                imageWrapper.classList.add('hidden'); // Hide the image wrapper
+                
+                wishMessage.style.display = 'block';
+                greetingText.innerHTML = `Happy Ganesh Chaturthi!`;
+                displaySenderName.textContent = `(${sender} की ओर से)`;
+                replySection.classList.remove('hidden');
+                
+                mainContainer.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    mainContainer.style.transform = 'scale(1)';
+                }, 500);
+
+            } else {
+                inputSection.classList.remove('hidden');
+                imageWrapper.classList.remove('hidden'); // Show the image wrapper
+                wishMessage.style.display = 'none';
+                replySection.classList.add('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'a616fafbbd5b3d8ad332eadcd8785515',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/a616fafbbd5b3d8ad332eadcd8785515/invoke.js"></script>
